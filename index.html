@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="javascript" href="script.js">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyB1aX4KX9ZzUKHpwuZapdSETHsZDou1Mgw",
+          authDomain: "budget-planner-web-app-6a4b0.firebaseapp.com",
+          projectId: "budget-planner-web-app-6a4b0",
+          storageBucket: "budget-planner-web-app-6a4b0.firebasestorage.app",
+          messagingSenderId: "898813743235",
+          appId: "1:898813743235:web:cf53ed760ad8caa2084bb6"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+</head>
+<body>
+    <header>
+        <h1>Budget Planner</h1>
+        <button id="dark-mode-toggle">🌙</button>
+        <button id="login-btn">Login</button>
+        <button id="logout-btn" style="display: none;">Logout</button>
+    </header>
+
+    <main>
+        <section id="income-expense">
+            <h2>Add Transaction</h2>
+            <input type="text" id="desc" placeholder="Description">
+            <input type="number" id="amount" placeholder="Amount">
+            <select id="category">
+                <option value="income">Income</option>
+                <option value="rent">Rent</option>
+                <option value="food">Food</option>
+                <option value="transportation">Transportation</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="other">Other</option>
+            </select>
+            <button id="add-transaction-btn">Add</button>
+        </section>
+
+        <section id="summary">
+            <h2>Summary</h2>
+            <p>Total Income: $<span id="total-income">0</span></p>
+            <p>Total Expenses: $<span id="total-expenses">0</span></p>
+            <p>Balance: $<span id="balance">0</span></p>
+            <p>Savings Goal: $<input type="number" id="savings-goal" placeholder="Enter goal"></p>
+            <p>Progress: <span id="savings-progress">0%</span></p>
+            <button id="download-report">Download Report</button>
+        </section>
+
+        <section id="transactions">
+            <h2>Transaction History</h2>
+            <ul id="transaction-list"></ul>
+        </section>
+
+        <section id="chart-section">
+            <h2>Spending Breakdown</h2>
+            <canvas id="expenseChart"></canvas>
+        </section>
+
+        <section id="chatbot-section">
+            <h2>AI Budget Assistant</h2>
+            <input type="text" id="chat-input" placeholder="Ask for budget tips...">
+            <button id="chat-submit">Ask</button>
+            <p id="chat-response"></p>
+        </section>
+
+        <section id="biometric-section">
+            <h2>Secure Access</h2>
+            <button id="biometric-auth">Use Biometric Authentication</button>
+            <p id="auth-status"></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Budget Planner Loaded Successfully");
+        });
+    </script>
+</body>
+</html>
